@@ -1,0 +1,150 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                    ARQUITETURA DO PROJETO                            ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                        EVOLUÇÃO DO CÓDIGO                            │
+└─────────────────────────────────────────────────────────────────────┘
+
+    ┌─────────────────────┐
+    │ repo_search_mvp.py  │  ← Versão Original (Script)
+    │                     │     • Funções simples
+    │  - main()           │     • Terminal
+    │  - clone()           │     • JSON output
+    │  - search()          │
+    └──────────┬──────────┘
+               │
+               │ REFATORAÇÃO
+               ▼
+    ┌─────────────────────┐
+    │  repo_searcher.py   │  ← Módulo Reutilizável (Classe)
+    │                     │     • Classe RepoSearcher
+    │  class RepoSearcher │     • Callbacks
+    │    - clone()        │     • Threading
+    │    - search()       │     • Cancelamento
+    │    - cancel()       │
+    └──────────┬──────────┘
+               │
+               │ USA
+               ▼
+    ┌─────────────────────┐
+    │      gui.py         │  ← Interface Gráfica
+    │                     │     • Tkinter
+    │  class RepoSearchGUI│     • Usa RepoSearcher
+    │    - start_search() │     • Thread separada
+    │    - show_results() │     • Preview código
+    └─────────────────────┘
+
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                        FLUXO DE EXECUÇÃO                            │
+└─────────────────────────────────────────────────────────────────────┘
+
+SCRIPT MVP (repo_search_mvp.py):
+┌─────────────────────────────────────────────────────────────────────┐
+│ 1. Carrega .env                                                     │
+│    └─> Valida GITHUB_TOKEN                                          │
+│                                                                      │
+│ 2. Para cada repositório em REPOS:                                   │
+│    ├─> build_url() → Cria URL com autenticação                      │
+│    ├─> clone_or_update_repo() → Clona ou atualiza                   │
+│    ├─> search_in_repo() → Busca string em todos arquivos            │
+│    └─> Coleta resultados                                             │
+│                                                                      │
+│ 3. Salva em resultado_busca.json                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+
+INTERFACE GRÁFICA (gui.py):
+┌─────────────────────────────────────────────────────────────────────┐
+│ 1. Usuário configura:                                               │
+│    ├─> Token GitHub                                                 │
+│    ├─> Lista de repositórios                                        │
+│    └─> String de busca                                              │
+│                                                                      │
+│ 2. Usuário clica "Buscar"                                           │
+│    └─> start_search()                                               │
+│                                                                      │
+│ 3. Thread separada executa:                                         │
+│    ├─> Cria RepoSearcher                                            │
+│    ├─> search_repos() → Para cada repo:                             │
+│    │   ├─> clone_or_update_repo()                                   │
+│    │   └─> search_in_repo()                                         │
+│    └─> Callbacks atualizam UI em tempo real                         │
+│                                                                      │
+│ 4. Resultados aparecem na tabela                                    │
+│    └─> Usuário pode ver detalhes, salvar, etc.                      │
+└─────────────────────────────────────────────────────────────────────┘
+
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                    COMPARAÇÃO: MVP vs MÓDULO                        │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────┬──────────────────────┬──────────────────────┐
+│ Característica       │ repo_search_mvp.py    │ repo_searcher.py     │
+├──────────────────────┼──────────────────────┼──────────────────────┤
+│ Tipo                 │ Script Procedural    │ Classe OOP            │
+│ Interface            │ Terminal              │ Módulo (sem UI)       │
+│ Callbacks            │ ❌ Não                │ ✅ Sim                │
+│ Threading            │ ❌ Não                │ ✅ Sim                │
+│ Cancelamento         │ ❌ Não                │ ✅ Sim                │
+│ Reutilização         │ ❌ Baixa              │ ✅ Alta               │
+│ Complexidade         │ ⭐ Simples            │ ⭐⭐ Média            │
+│ Quando usar          │ Scripts/Automação    │ Integração/GUI       │
+└──────────────────────┴──────────────────────┴──────────────────────┘
+
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                      MÉTODOS PRINCIPAIS                             │
+└─────────────────────────────────────────────────────────────────────┘
+
+repo_search_mvp.py:
+  ├─ find_git_executable()     → Encontra Git no sistema
+  ├─ build_url()               → Cria URL com autenticação
+  ├─ clone_or_update_repo()    → Clona ou atualiza repositório
+  ├─ search_in_repo()          → Busca string nos arquivos
+  └─ main()                    → Orquestra todo o processo
+
+repo_searcher.py (Classe):
+  ├─ __init__()                → Inicializa com token/usuário
+  ├─ build_url()               → Cria URL com autenticação
+  ├─ clone_or_update_repo()    → Clona/atualiza (com callback)
+  ├─ search_in_repo()          → Busca string (com progresso)
+  ├─ search_repos()            → Busca em múltiplos repos
+  └─ cancel()                  → Cancela busca em andamento
+
+gui.py (Classe):
+  ├─ __init__()                → Inicializa interface
+  ├─ create_widgets()          → Cria todos os widgets
+  ├─ start_search()            → Inicia busca
+  ├─ _search_thread()          → Executa busca em thread
+  ├─ add_result()              → Adiciona resultado na tabela
+  ├─ show_result_details()     → Mostra código completo
+  └─ save_results()            → Exporta para JSON
+
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                    FORMATO DOS RESULTADOS                           │
+└─────────────────────────────────────────────────────────────────────┘
+
+{
+  "repo": "nome_repositorio",
+  "file": "caminho/relativo/arquivo.py",
+  "line_number": 42,
+  "line": "código da linha encontrada"
+}
+
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                      DIFERENCIAIS TÉCNICOS                          │
+└─────────────────────────────────────────────────────────────────────┘
+
+✅ Detecção automática do Git (encontra mesmo se não estiver no PATH)
+✅ Tratamento robusto de erros (continua mesmo se um repo falhar)
+✅ Busca em thread separada (interface não trava)
+✅ Callbacks em tempo real (atualiza progresso enquanto busca)
+✅ Suporte a regex (busca padrões complexos)
+✅ Cancelamento de buscas (pode interromper buscas longas)
+✅ Preview do código (mostra contexto ao redor da linha encontrada)
+
