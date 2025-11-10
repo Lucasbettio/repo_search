@@ -1,0 +1,12 @@
+# --- Core ---
+requests==2.31.0          # Requisições HTTP à API do GitLab
+python-dotenv==1.0.1      # Carregar variáveis de ambiente do .env
+tqdm==4.66.2              # Barra de progresso para visualizar o andamento da busca
+PyYAML==6.0.2             # (Opcional) Leitura de configs YAML, caso use configuração por arquivo
+
+# --- Desenvolvimento ---
+black==24.3.0             # Formatação automática de código
+flake8==7.0.0             # Análise estática de estilo e lint
+pytest==8.2.0             # Testes automatizados
+pytest-mock==3.14.0       # Mocking em testes
+GitPython==3.1.43
