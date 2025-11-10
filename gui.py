@@ -290,28 +290,22 @@ class RepoSearchGUI:
         """Inicia a busca."""
         if not self.validate_inputs():
             return
-        
-        # Limpar resultados anteriores
+
         self.clear_results()
-        
-        # Desabilitar botão de busca
+
         self.search_button.config(state="disabled")
         self.cancel_button.config(state="normal")
-        
-        # Iniciar barra de progresso
+
         self.progress_bar.start()
         self.progress_var.set("Iniciando busca...")
-        
-        # Obter parâmetros
+
         token = self.token_var.get().strip()
         user = self.user_var.get().strip() or "Lucasbettio"
         repos = self.get_repos()
         search_string = self.search_var.get().strip()
-        
-        # Criar searcher
+
         self.searcher = RepoSearcher(token, user)
-        
-        # Executar busca em thread separada
+
         self.search_thread = threading.Thread(
             target=self._search_thread,
             args=(repos, search_string),
@@ -328,8 +322,7 @@ class RepoSearchGUI:
                 progress_callback=self.progress_callback,
                 result_callback=self.result_callback
             )
-            
-            # Finalizar na thread principal
+
             self.root.after(0, self._search_complete, results)
         except Exception as e:
             self.root.after(0, lambda: self._search_error(str(e)))
@@ -341,8 +334,6 @@ class RepoSearchGUI:
         self.status_var.set(f"Busca concluída! {len(results)} resultado(s) encontrado(s)")
         self.search_button.config(state="normal")
         self.cancel_button.config(state="disabled")
-        
-        # Salvar configuração
         self.save_config()
     
     def _search_error(self, error_msg):
@@ -381,17 +372,14 @@ class RepoSearchGUI:
         
         if 0 <= idx < len(self.results):
             result = self.results[idx]
-            
-            # Criar janela de detalhes
+
             detail_window = tk.Toplevel(self.root)
             detail_window.title(f"Detalhes - {result['file']}")
             detail_window.geometry("800x600")
-            
-            # Frame principal
+
             main_frame = ttk.Frame(detail_window, padding="10")
             main_frame.pack(fill=tk.BOTH, expand=True)
-            
-            # Informações
+
             info_frame = ttk.LabelFrame(main_frame, text="Informações", padding="10")
             info_frame.pack(fill=tk.X, pady=(0, 10))
             
@@ -401,16 +389,14 @@ class RepoSearchGUI:
                  font=("Arial", 10, "bold")).pack(anchor=tk.W)
             ttk.Label(info_frame, text=f"Linha: {result['line_number']}", 
                  font=("Arial", 10, "bold")).pack(anchor=tk.W)
-            
-            # Código
+
             code_frame = ttk.LabelFrame(main_frame, text="Código", padding="10")
             code_frame.pack(fill=tk.BOTH, expand=True)
             
             code_text = scrolledtext.ScrolledText(code_frame, wrap=tk.WORD, 
                                                   font=("Consolas", 10))
             code_text.pack(fill=tk.BOTH, expand=True)
-            
-            # Tentar ler o arquivo e mostrar contexto
+
             try:
                 repo_path = Path("repos_temp") / result["repo"]
                 file_path = repo_path / result["file"]
@@ -418,8 +404,7 @@ class RepoSearchGUI:
                 if file_path.exists():
                     with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                         lines = f.readlines()
-                    
-                    # Mostrar algumas linhas antes e depois
+
                     line_num = result["line_number"]
                     start = max(0, line_num - 10)
                     end = min(len(lines), line_num + 10)
@@ -427,8 +412,7 @@ class RepoSearchGUI:
                     for i in range(start, end):
                         prefix = ">>> " if i + 1 == line_num else "    "
                         code_text.insert(tk.END, f"{prefix}{i+1:4d} | {lines[i]}")
-                    
-                    # Destacar linha encontrada
+
                     code_text.tag_add("highlight", 
                                     f"{line_num - start + 1}.0", 
                                     f"{line_num - start + 1}.end")

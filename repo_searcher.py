@@ -8,15 +8,13 @@ from pathlib import Path
 from typing import List, Dict, Optional
 import threading
 
-# Tentar encontrar e configurar Git antes de importar
+
 def find_git_executable():
     """Encontra o executável Git no sistema."""
-    # Tentar encontrar Git no PATH
     git_path = shutil.which("git")
     if git_path:
         return git_path
-    
-    # Tentar localizações comuns no Windows
+
     common_paths = [
         r"C:\Program Files\Git\bin\git.exe",
         r"C:\Program Files (x86)\Git\bin\git.exe",
@@ -29,15 +27,12 @@ def find_git_executable():
     
     return None
 
-# Configurar variável de ambiente se Git foi encontrado
 git_exe = find_git_executable()
 if git_exe and not os.getenv("GIT_PYTHON_GIT_EXECUTABLE"):
     os.environ["GIT_PYTHON_GIT_EXECUTABLE"] = git_exe
 
-# Importar git (pode falhar se Git não estiver instalado)
 try:
     import git
-    # Tentar refresh silencioso
     try:
         git.refresh()
     except:
@@ -98,7 +93,6 @@ class RepoSearcher:
                 repo = git.Repo(repo_path)
                 origin = repo.remotes.origin
 
-                # Verificar e atualizar URL se necessário
                 if origin.url != repo_url:
                     config_lock = repo_path / ".git" / "config.lock"
                     if config_lock.exists():
@@ -137,15 +131,13 @@ class RepoSearcher:
         try:
             pattern = re.compile(search_string, re.IGNORECASE)
         except re.error:
-            # Se não for regex válido, usar busca literal
             pattern = re.compile(re.escape(search_string), re.IGNORECASE)
         
         file_count = 0
         for root, _, files in os.walk(repo_path):
             if self._cancel_flag.is_set():
                 break
-                
-            # Ignorar pasta .git
+
             if ".git" in root:
                 continue
                 
@@ -172,7 +164,6 @@ class RepoSearcher:
                                     "line": line.strip()
                                 })
                 except (PermissionError, UnicodeDecodeError, IOError):
-                    # Ignorar arquivos binários ou sem permissão
                     continue
         
         return results
