@@ -1,0 +1,1004 @@
+[
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 1,
+    "line": "# Sistema de Cadastro de Pessoas - Global Tech"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 9,
+    "line": "- **Incluir Pessoa**: Cadastrar novas pessoas."
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 10,
+    "line": "- **Pesquisar Pessoa**: Buscar por CPF ou Nome."
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 11,
+    "line": "- **Alterar Pessoa**: Editar dados de pessoas já cadastradas."
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 12,
+    "line": "- **Excluir Pessoa**: Remover pessoa cadastrada."
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 13,
+    "line": "- **Calcular Peso Ideal**: Calcular peso ideal, baseado na altura e no sexo da pessoa."
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 27,
+    "line": "├── pessoas/                          # App principal"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 39,
+    "line": "│       └── pessoas/"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 55,
+    "line": "- `templates/pessoas/index.html`: Interface do usuário com JavaScript"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 73,
+    "line": "### Pessoa"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 75,
+    "line": "class Pessoa(models.Model):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 150,
+    "line": "| POST | `/incluir/` | Incluir nova pessoa | `nome`, `data_nasc`, `cpf`, `sexo`, `altura`, `peso` |"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 151,
+    "line": "| POST | `/pesquisar/` | Pesquisar pessoa | `cpf` ou `nome` (opcional) |"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 152,
+    "line": "| POST | `/alterar/` | Alterar pessoa | `id` + dados atualizados |"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 153,
+    "line": "| POST | `/excluir/` | Excluir pessoa | `id` |"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 156,
+    "line": "### Exemplo de Requisição (Incluir Pessoa)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 173,
+    "line": "\"message\": \"Pessoa incluída com sucesso\","
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 180,
+    "line": "### 1. Incluir uma Pessoa"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 185,
+    "line": "### 2. Pesquisar uma Pessoa"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 191,
+    "line": "### 3. Alterar uma Pessoa"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 192,
+    "line": "1. Pesquise e selecione a pessoa desejada"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 197,
+    "line": "### 4. Excluir uma Pessoa"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 198,
+    "line": "1. Pesquise e selecione a pessoa desejada"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "README.md",
+    "line_number": 204,
+    "line": "1. Pesquise e selecione a pessoa desejada"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\apps.py",
+    "line_number": 4,
+    "line": "class PessoasConfig(AppConfig):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\apps.py",
+    "line_number": 6,
+    "line": "name = 'pessoas'"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\dto.py",
+    "line_number": 6,
+    "line": "class PessoaDTO:"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\models.py",
+    "line_number": 3,
+    "line": "class Pessoa(models.Model):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 1,
+    "line": "from .dto import PessoaDTO"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 2,
+    "line": "from .task import PessoaTask"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 4,
+    "line": "class PessoaService:"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 7,
+    "line": "def incluir_pessoa(pessoa_dto: PessoaDTO):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 9,
+    "line": "pessoa_id = PessoaTask.incluir(pessoa_dto)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 10,
+    "line": "return {\"success\": True, \"id\": pessoa_id, \"message\": \"Pessoa incluída com sucesso\"}"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 12,
+    "line": "return {\"success\": False, \"message\": f\"Erro ao incluir pessoa: {str(e)}\"}"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 15,
+    "line": "def alterar_pessoa(pessoa_dto: PessoaDTO):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 17,
+    "line": "PessoaTask.alterar(pessoa_dto)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 18,
+    "line": "return {\"success\": True, \"message\": \"Pessoa alterada com sucesso\"}"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 20,
+    "line": "return {\"success\": False, \"message\": f\"Erro ao alterar pessoa: {str(e)}\"}"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 23,
+    "line": "def excluir_pessoa(pessoa_id: int):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 25,
+    "line": "PessoaTask.excluir(pessoa_id)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 26,
+    "line": "return {\"success\": True, \"message\": \"Pessoa excluída com sucesso\"}"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 28,
+    "line": "return {\"success\": False, \"message\": f\"Erro ao excluir pessoa: {str(e)}\"}"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 31,
+    "line": "def pesquisar_pessoa(pessoa_id: int = None, cpf: str = None, nome: str = None):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 33,
+    "line": "resultado = PessoaTask.pesquisar(pessoa_id, cpf, nome)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 41,
+    "line": "return {\"success\": False, \"message\": f\"Erro ao pesquisar pessoa: {str(e)}\"}"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 44,
+    "line": "def calcular_peso_ideal(pessoa_id: int):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 46,
+    "line": "pessoa_dto = PessoaTask.pesquisar(pessoa_id)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 47,
+    "line": "if pessoa_dto:"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 48,
+    "line": "peso_ideal = pessoa_dto.calcular_peso_ideal()"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\service.py",
+    "line_number": 51,
+    "line": "return {\"success\": False, \"message\": \"Pessoa não encontrada\"}"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 1,
+    "line": "from .models import Pessoa"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 2,
+    "line": "from .dto import PessoaDTO"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 4,
+    "line": "class PessoaTask:"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 7,
+    "line": "def incluir(pessoa_dto: PessoaDTO):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 8,
+    "line": "pessoa = Pessoa("
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 9,
+    "line": "nome=pessoa_dto.nome,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 10,
+    "line": "data_nasc=pessoa_dto.data_nasc,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 11,
+    "line": "cpf=pessoa_dto.cpf,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 12,
+    "line": "sexo=pessoa_dto.sexo,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 13,
+    "line": "altura=pessoa_dto.altura,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 14,
+    "line": "peso=pessoa_dto.peso"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 16,
+    "line": "pessoa.save()"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 17,
+    "line": "return pessoa.id"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 20,
+    "line": "def alterar(pessoa_dto: PessoaDTO):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 21,
+    "line": "pessoa = Pessoa.objects.get(id=pessoa_dto.id)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 22,
+    "line": "pessoa.nome = pessoa_dto.nome"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 23,
+    "line": "pessoa.data_nasc = pessoa_dto.data_nasc"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 24,
+    "line": "pessoa.cpf = pessoa_dto.cpf"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 25,
+    "line": "pessoa.sexo = pessoa_dto.sexo"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 26,
+    "line": "pessoa.altura = pessoa_dto.altura"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 27,
+    "line": "pessoa.peso = pessoa_dto.peso"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 28,
+    "line": "pessoa.save()"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 32,
+    "line": "def excluir(pessoa_id: int):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 33,
+    "line": "pessoa = Pessoa.objects.get(id=pessoa_id)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 34,
+    "line": "pessoa.delete()"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 38,
+    "line": "def pesquisar(pessoa_id: int = None, cpf: str = None, nome: str = None):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 39,
+    "line": "if pessoa_id:"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 41,
+    "line": "pessoa = Pessoa.objects.get(id=pessoa_id)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 42,
+    "line": "return PessoaDTO("
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 43,
+    "line": "id=pessoa.id,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 44,
+    "line": "nome=pessoa.nome,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 45,
+    "line": "data_nasc=pessoa.data_nasc,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 46,
+    "line": "cpf=pessoa.cpf,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 47,
+    "line": "sexo=pessoa.sexo,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 48,
+    "line": "altura=pessoa.altura,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 49,
+    "line": "peso=pessoa.peso"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 51,
+    "line": "except Pessoa.DoesNotExist:"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 55,
+    "line": "pessoa = Pessoa.objects.get(cpf=cpf)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 56,
+    "line": "return PessoaDTO("
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 57,
+    "line": "id=pessoa.id,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 58,
+    "line": "nome=pessoa.nome,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 59,
+    "line": "data_nasc=pessoa.data_nasc,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 60,
+    "line": "cpf=pessoa.cpf,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 61,
+    "line": "sexo=pessoa.sexo,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 62,
+    "line": "altura=pessoa.altura,"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 63,
+    "line": "peso=pessoa.peso"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 65,
+    "line": "except Pessoa.DoesNotExist:"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 68,
+    "line": "pessoas = Pessoa.objects.filter(nome__icontains=nome)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 69,
+    "line": "return [PessoaDTO("
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 77,
+    "line": ") for p in pessoas]"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 79,
+    "line": "pessoas = Pessoa.objects.all()"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 80,
+    "line": "return [PessoaDTO("
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\task.py",
+    "line_number": 88,
+    "line": ") for p in pessoas]"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\urls.py",
+    "line_number": 6,
+    "line": "path('incluir/', views.incluir_pessoa, name='incluir_pessoa'),"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\urls.py",
+    "line_number": 7,
+    "line": "path('alterar/', views.alterar_pessoa, name='alterar_pessoa'),"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\urls.py",
+    "line_number": 8,
+    "line": "path('excluir/', views.excluir_pessoa, name='excluir_pessoa'),"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\urls.py",
+    "line_number": 9,
+    "line": "path('pesquisar/', views.pesquisar_pessoa, name='pesquisar_pessoa'),"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 7,
+    "line": "from .dto import PessoaDTO"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 8,
+    "line": "from .service import PessoaService"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 11,
+    "line": "return render(request, 'pessoas/index.html')"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 15,
+    "line": "def incluir_pessoa(request):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 18,
+    "line": "pessoa_dto = PessoaDTO("
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 26,
+    "line": "resultado = PessoaService.incluir_pessoa(pessoa_dto)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 33,
+    "line": "def alterar_pessoa(request):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 36,
+    "line": "pessoa_dto = PessoaDTO("
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 45,
+    "line": "resultado = PessoaService.alterar_pessoa(pessoa_dto)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 52,
+    "line": "def excluir_pessoa(request):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 55,
+    "line": "pessoa_id = data.get('id')"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 56,
+    "line": "resultado = PessoaService.excluir_pessoa(pessoa_id)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 63,
+    "line": "def pesquisar_pessoa(request):"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 66,
+    "line": "pessoa_id = data.get('id')"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 69,
+    "line": "resultado = PessoaService.pesquisar_pessoa(pessoa_id, cpf, nome)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 79,
+    "line": "pessoa_id = data.get('id')"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\views.py",
+    "line_number": 80,
+    "line": "resultado = PessoaService.calcular_peso_ideal(pessoa_id)"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 6,
+    "line": "<title>Sistema de Cadastro de Pessoas</title>"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 157,
+    "line": "<h1>Sistema de Cadastro de Pessoas</h1>"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 161,
+    "line": "<form id=\"pessoaForm\">"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 198,
+    "line": "<button type=\"button\" onclick=\"incluirPessoa()\" class=\"btn-primary\">Incluir</button>"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 199,
+    "line": "<button type=\"button\" onclick=\"pesquisarPessoa()\" class=\"btn-success\">Pesquisar</button>"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 200,
+    "line": "<button type=\"button\" onclick=\"alterarPessoa()\" class=\"btn-warning\" id=\"btnAlterar\" disabled>Alterar</button>"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 201,
+    "line": "<button type=\"button\" onclick=\"excluirPessoa()\" class=\"btn-danger\" id=\"btnExcluir\" disabled>Excluir</button>"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 213,
+    "line": "let pessoaSelecionada = null;"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 226,
+    "line": "document.getElementById('pessoaForm').reset();"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 230,
+    "line": "pessoaSelecionada = null;"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 233,
+    "line": "function preencherFormulario(pessoa) {"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 234,
+    "line": "document.getElementById('nome').value = pessoa.nome;"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 235,
+    "line": "document.getElementById('data_nasc').value = pessoa.data_nasc;"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 236,
+    "line": "document.getElementById('cpf').value = pessoa.cpf;"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 237,
+    "line": "document.getElementById('sexo').value = pessoa.sexo;"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 238,
+    "line": "document.getElementById('altura').value = pessoa.altura;"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 239,
+    "line": "document.getElementById('peso').value = pessoa.peso;"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 244,
+    "line": "pessoaSelecionada = pessoa;"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 247,
+    "line": "async function incluirPessoa() {"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 248,
+    "line": "const formData = new FormData(document.getElementById('pessoaForm'));"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 269,
+    "line": "showMessage('Erro ao incluir pessoa: ' + error.message, 'error');"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 273,
+    "line": "async function pesquisarPessoa() {"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 305,
+    "line": "showMessage('Pessoa encontrada!', 'success');"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 314,
+    "line": "showMessage('Erro ao pesquisar pessoa: ' + error.message, 'error');"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 339,
+    "line": "async function alterarPessoa() {"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 340,
+    "line": "if (!pessoaSelecionada) {"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 341,
+    "line": "showMessage('Selecione uma pessoa primeiro', 'error');"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 345,
+    "line": "const formData = new FormData(document.getElementById('pessoaForm'));"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 347,
+    "line": "data.id = pessoaSelecionada.id;"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 367,
+    "line": "showMessage('Erro ao alterar pessoa: ' + error.message, 'error');"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 377,
+    "line": "async function excluirPessoa() {"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 378,
+    "line": "if (!pessoaSelecionada) {"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 379,
+    "line": "showMessage('Selecione uma pessoa primeiro', 'error');"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 383,
+    "line": "if (!confirm('Tem certeza que deseja excluir esta pessoa?')) {"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 393,
+    "line": "body: JSON.stringify({id: pessoaSelecionada.id})"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 405,
+    "line": "showMessage('Erro ao excluir pessoa: ' + error.message, 'error');"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 410,
+    "line": "if (!pessoaSelecionada) {"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 411,
+    "line": "showMessage('Selecione uma pessoa primeiro', 'error');"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 421,
+    "line": "body: JSON.stringify({id: pessoaSelecionada.id})"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\pessoas\\templates\\pessoas\\index.html",
+    "line_number": 428,
+    "line": "const pesoAtual = pessoaSelecionada.peso;"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\teste_pratico\\settings.py",
+    "line_number": 29,
+    "line": "'pessoas',"
+  },
+  {
+    "repo": "teste_pratico",
+    "file": "teste_pratico\\teste_pratico\\urls.py",
+    "line_number": 6,
+    "line": "path('', include('pessoas.urls')),"
+  }
+]

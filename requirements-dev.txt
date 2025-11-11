@@ -2,6 +2,9 @@
 python-dotenv==1.0.1      # Carregar variáveis de ambiente do .env
 GitPython==3.1.43         # Clonar e gerenciar repositórios Git
 
+# API GitLab (nova dependência)
+python-gitlab>=4.5.0
+
 # --- Desenvolvimento ---
 black==24.3.0             # Formatação automática de código
 flake8==7.0.0             # Análise estática de estilo e lint
